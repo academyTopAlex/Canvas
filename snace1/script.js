@@ -71,19 +71,30 @@ function game(){
         x: x,
         y: y
     }
-
+    // смерть об край
+    if (x < 0 || x > 13 || y <= -1 || y > 11){
+        end();
+    }
+    // смерть об хвост
+    for (let i = 0; i < arr.length; i++) {
+        if (x == arr[i].x && y == arr[i].y){
+           end();
+        }
+    }
+    
     arr.unshift(newHead);
-    console.log(x, y );
-    console.log(arr);
+    
 }
 
-let gameInterval = setInterval(game, 1000)
-
+let gameInterval = setInterval(game, 200)
+function end() {
+    clearInterval(gameInterval);
+    alert("все")
+}
 function getFoodCord(num) {
    return Math.floor(Math.random() * num + 1);
 }
 
 document.body.addEventListener("keydown", () =>{
     napravlrenie = event.keyCode;
-    console.log(napravlrenie);
 });
