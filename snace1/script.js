@@ -81,12 +81,12 @@ function game(){
            end();
         }
     }
-    
+
     arr.unshift(newHead);
     
 }
 
-let gameInterval = setInterval(game, 200)
+let gameInterval = setInterval(game, 600)
 function end() {
     clearInterval(gameInterval);
     alert("все")
@@ -96,5 +96,24 @@ function getFoodCord(num) {
 }
 
 document.body.addEventListener("keydown", () =>{
-    napravlrenie = event.keyCode;
+    let temp = event.keyCode;
+
+    if(temp == 39 && napravlrenie != 37){
+        napravlrenie = 39;
+    }
+
+    if (temp == 37 && napravlrenie != 39){
+        napravlrenie = 37;
+    }
+    
+    if(temp == 40 && napravlrenie != 38){
+        napravlrenie = 40;
+    }
+    if (temp == 38 && napravlrenie != 40){
+        napravlrenie = 38;
+    }
+
+    console.log(event.keyCode, napravlrenie);
+
+
 });
